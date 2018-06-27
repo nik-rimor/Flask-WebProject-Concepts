@@ -1,0 +1,42 @@
+# Setup additional dbase if needed in Postgres
+$ sudo su - postgres
+$ psql
+# CREATE USER app_local WITH PASSWORD 'app_local';
+# CREATE DATABASE db_local;
+# GRANT ALL PRIVILEGES ON DATABASE app_local TO db_local;
+
+# Setting up the Python environment
+sudo apt-get install python-pip python-dev build-essential
+
+# Install virtualenv and wrapper
+sudo pip install virtualenv virtualenvwrapper
+
+######### Update for Python 3.6 and newer ##########
+As pawciobiel correctly comments, pyvenv is deprecated as of Python 3.6 and the new way is:
+python3 -m venv /path/to/new/virtual/environment
+#######################################################
+
+# Upgrade pip
+sudo pip install --upgrade pip
+
+# In order to use virtualenvwrapper, we need to modify our bashrc file
+cp .bashrc bashrc-backup
+printf '\n%s\n%s\n%s' '# virtualenv' 'export WORKON_HOME=~/virtualenvs' 'source /usr/local/bin/virtualenvwrapper.sh' >> ~/.bashrc
+source ~/.bashrc
+mkdir -p $WORKON_HOME
+
+
+# Additionallibraries for pip to work when because of postgres connection library
+sudo apt-get install libpq-dev libncurses5-dev
+
+
+# Create and Activate virtualenv
+mkvirtualenv -p python3 venv --always-copy
+workon venv
+
+# Additions to .bashrc to activate virtual environment
+# add Environmental variables
+workon venv
+export DATABASE_URL=postgres://puppies:devpassword@localhost/puppies
+# export REDIS_URL=redis://127.0.0.1:6379/0
+export DEBUG=True
