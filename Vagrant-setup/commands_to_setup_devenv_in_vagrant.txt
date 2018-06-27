@@ -26,17 +26,18 @@ source ~/.bashrc
 mkdir -p $WORKON_HOME
 
 
-# Additionallibraries for pip to work when because of postgres connection library
+# Additionallibraries for pip to work because of postgres connection library
 sudo apt-get install libpq-dev libncurses5-dev
 
 
-# Create and Activate virtualenv
+# Create and Activate virtualenv 
+# use -p python3 to work with 3.5.2 or dont use -p switch for python 2.7
 mkvirtualenv -p python3 venv --always-copy
 workon venv
 
 # Additions to .bashrc to activate virtual environment
 # add Environmental variables
 workon venv
-export DATABASE_URL=postgres://puppies:devpassword@localhost/puppies
+export DATABASE_URL=postgres://webproject:ToFoveroPa55w0rd@localhost/webproject
 # export REDIS_URL=redis://127.0.0.1:6379/0
 export DEBUG=True
