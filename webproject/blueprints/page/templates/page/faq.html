@@ -1,0 +1,42 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}FAQs{% endblock %}
+{% block heading %}<h2>Frequently Asked Questions</h2>{% endblock %}
+
+{% block body %}
+  <p>
+    This section contains the most frequently asked questions about our service at 
+    <a href="http://{{ config.get('SERVER_NAME') }}">
+      http://{{ config.get('SERVER_NAME') }}
+    </a>. 
+    <br />Please, read through the Questtions &amp; Answers before you submit a 
+    form with any issues you may encounter.
+    <hr />
+    <div class="qna">
+        <p class="question">
+          Is This the first question?
+        </p>
+        <p class="qanswer">
+          Yes this is the first question
+        </p>  
+    </div>
+    <div class="qna">
+        <p class="question">
+          Is This the second question?
+        </p>
+        <p class="qanswer">
+          Yes this is the second question
+        </p>  
+    </div>
+    <div class="qna">
+        <p class="question">
+          Is This the third question?
+        </p>
+        <p class="qanswer">
+          Yes this is the third question
+        </p>  
+    </div>
+    
+
+  <small class="text-muted">Last updated April 1st 2042</small>
+{% endblock %}
