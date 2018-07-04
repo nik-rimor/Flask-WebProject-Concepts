@@ -1,3 +1,5 @@
+{% import 'macros/flash.html' as flash with context %}
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description"
           content="{% block meta_description %}{% endblock %}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{% block title %}{% endblock %}</title>
 
@@ -18,12 +21,6 @@
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='styles/vendor/font-awesome.min.css') }}">
-    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
-    integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
   </head>
   <body>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -63,22 +60,30 @@
 
 
     <main class="container" role="main">
-      <div class="md-margin-top">{% block heading %}{% endblock %}</div>
-      {% block body %}{% endblock %}
+        {{ flash.render() }}
+        <div class="md-margin-top">{% block heading %}{% endblock %}</div>
+        {% block body %}{% endblock %}
     </main>
 
 
-    <footer class="text-center">
+    <footer class="footer text-center">
         <ul class="list-inline">
-          <li class="list-inline-item text-muted">oKakos &copy; 2018</li>
-          <li class="list-inline-item"><a href="{{ url_for('page.privacy') }}">Privacy Policy</a></li>
-          <li class="list-inline-item"><a href="{{ url_for('page.terms') }}">Terms of Service</a></li>
-          <li class="list-inline-item"><a href="{{ url_for('page.faq') }}">FAQs</a></li>
+            <li class="list-inline-item text-muted">oKakos &copy; 2018</li>
+            <li class="list-inline-item"><a href="{{ url_for('page.privacy') }}">Privacy Policy</a></li>
+            <li class="list-inline-item"><a href="{{ url_for('page.terms') }}">Terms of Service</a></li>
+            <li class="list-inline-item"><a href="{{ url_for('page.faq') }}">FAQs</a></li>
+            <li class="list-inline-item"><a href="{{ url_for('contact.index') }}">Contact</a></li>
         </ul>
     </footer>
 
-    <script
-      src="{{ url_for('static', filename='scripts/vendor/bootstrap.min.js') }}">
-    </script>
+
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+    integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+
   </body>
 </html>

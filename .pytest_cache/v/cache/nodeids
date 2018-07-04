@@ -1,0 +1,7 @@
+[
+  "webproject/tests/page/test_views.py::TestPage::()::test_home_page",
+  "webproject/tests/page/test_views.py::TestPage::()::test_terms_page",
+  "webproject/tests/page/test_views.py::TestPage::()::test_privacy_page",
+  "webproject/tests/page/test_views.py::TestPage::()::test_faq_page",
+  "webproject/tests/page/test_views.py::TestPage::()::test_faq_page_title"
+]
